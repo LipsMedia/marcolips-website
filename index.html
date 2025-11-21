@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Intro Gate Overlay -->
+    <div id="introGate" class="intro-gate" aria-labelledby="introTitle" aria-describedby="introDesc">
+        <picture class="intro-bg">
+            <source srcset="assets/hero-1600.jpg" media="(min-width:1600px)">
+            <img src="assets/hero-1200.jpg" alt="Vollbild Intro" />
+        </picture>
+        <div class="intro-content">
+            <h1 id="introTitle">Marco Lips</h1>
+            <p id="introDesc">Photography & Visual Storytelling</p>
+            <button id="introEnter" class="intro-hotspot" aria-label="Eintreten" title="Zum Portfolio">●</button>
+            <p class="intro-hint" aria-hidden="true">Klicke den Punkt um fortzufahren</p>
+        </div>
+    </div>
+
+    <div id="siteContent" class="site-content hidden">
     <nav class="navbar">
         <div class="nav-container">
             <a class="logo" href="#home">Marco Lips</a>
@@ -24,21 +39,19 @@
         </div>
     </nav>
 
-    <!-- Hero / Intro (fullscreen image) -->
+    <!-- Hero (nun innerhalb der Hauptseite sichtbar nach Intro) -->
     <header id="home" class="hero full-hero">
         <picture>
             <source srcset="assets/hero-1600.jpg" media="(min-width:1600px)">
-            <img src="assets/hero-1200.jpg" alt="Hero image" class="hero-img">
+            <img src="assets/hero-1200.jpg" alt="Start Hero" class="hero-img">
         </picture>
-
         <div class="hero-overlay">
             <div class="hero-content">
-                <h1 class="hero-title">Marco Lips</h1>
-                <p class="hero-sub">Photography & Visual Storytelling</p>
-                <a class="btn btn-primary" href="#portfolio">Meine Arbeiten</a>
+                <h1 class="hero-title">Willkommen</h1>
+                <p class="hero-sub">Portfolio & Tools</p>
+                <a class="btn btn-primary" href="#portfolio">Direkt zum Portfolio</a>
             </div>
         </div>
-        <a class="hero-hotspot" href="#portfolio" aria-label="Gehe zum Portfolio"></a>
     </header>
 
     <!-- Portfolio Section -->
@@ -200,5 +213,6 @@
     </footer>
 
     <script src="script.js"></script>
+    </div><!-- /siteContent -->
 </body>
 </html>

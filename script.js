@@ -487,3 +487,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowLeft') showPrev();
     });
 })();
+
+// ========== Intro Gate Activation ==========
+(() => {
+    const enterBtn = document.getElementById('introEnter');
+    if (!enterBtn) return;
+    enterBtn.addEventListener('click', () => {
+        document.body.classList.add('ready');
+        // After animation hide gate completely
+        setTimeout(() => {
+            const gate = document.getElementById('introGate');
+            if (gate) gate.remove();
+            const site = document.getElementById('siteContent');
+            site?.classList.remove('hidden');
+        }, 700);
+    });
+})();

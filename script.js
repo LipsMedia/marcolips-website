@@ -503,3 +503,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 700);
     });
 })();
+
+// ========== Course Filter (Card Grid) ==========
+function applyCourseFilter(e){
+    e.preventDefault();
+    const value = document.getElementById('themeSelect')?.value.trim();
+    const cards = document.querySelectorAll('.card-section .card');
+    cards.forEach(c => {
+        if(!value || c.dataset.theme === value){
+            c.style.display = 'flex';
+        } else {
+            c.style.display = 'none';
+        }
+    });
+}
+
+function resetCourseFilter(){
+    const sel = document.getElementById('themeSelect');
+    if (sel) sel.value='';
+    const cards = document.querySelectorAll('.card-section .card');
+    cards.forEach(c => c.style.display='flex');
+}

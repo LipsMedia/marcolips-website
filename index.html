@@ -7,29 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Intro Gate Overlay -->
-    <div id="introGate" class="intro-gate" aria-labelledby="introTitle" aria-describedby="introDesc">
-        <picture class="intro-bg">
-            <source srcset="assets/hero-1600.jpg" media="(min-width:1600px)">
-            <img src="assets/hero-1200.jpg" alt="Vollbild Intro" />
-        </picture>
-        <div class="intro-content">
-            <h1 id="introTitle">Marco Lips</h1>
-            <p id="introDesc">Photography & Visual Storytelling</p>
-            <button id="introEnter" class="intro-hotspot" aria-label="Eintreten" title="Zum Portfolio">●</button>
-            <p class="intro-hint" aria-hidden="true">Klicke den Punkt um fortzufahren</p>
-        </div>
-    </div>
-
-    <div id="siteContent" class="site-content hidden">
-    <nav class="navbar">
+    <!-- Slim Top Navigation -->
+    <nav class="topbar">
         <div class="nav-container">
-            <a class="logo" href="#home">Marco Lips</a>
+            <a class="logo" href="#home">marcolips</a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+                <li><a href="#kurse" class="nav-link">FotoKurse</a></li>
+                <li><a href="#events" class="nav-link">FotoEvents</a></li>
+                <li><a href="#reisen" class="nav-link">FotoReisen</a></li>
+                <li><a href="#plus" class="nav-link">FotoPlus</a></li>
+                <li><a href="#walk" class="nav-link">FotoWalk</a></li>
+                <li><a href="#team" class="nav-link">FotoTeam</a></li>
+                <li><a href="#portfolio" class="nav-link">Galerie</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -38,21 +28,83 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero (nun innerhalb der Hauptseite sichtbar nach Intro) -->
-    <header id="home" class="hero full-hero">
+    <!-- Banner Section -->
+    <section class="banner" id="home">
         <picture>
             <source srcset="assets/hero-1600.jpg" media="(min-width:1600px)">
-            <img src="assets/hero-1200.jpg" alt="Start Hero" class="hero-img">
+            <img src="assets/hero-1200.jpg" alt="Banner" class="banner-img">
         </picture>
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1 class="hero-title">Willkommen</h1>
-                <p class="hero-sub">Portfolio & Tools</p>
-                <a class="btn btn-primary" href="#portfolio">Direkt zum Portfolio</a>
-            </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-bar">
+        <form id="filterForm" class="filter-form" onsubmit="applyCourseFilter(event)">
+            <label for="themeSelect" class="visually-hidden">Thema auswählen</label>
+            <select id="themeSelect" class="filter-select" title="Thema filtern">
+                <option value="">Auswählen...</option>
+                <option value="landschaft">Landschaft</option>
+                <option value="porträt">Porträt</option>
+                <option value="technik">Technik</option>
+                <option value="workflow">Workflow</option>
+            </select>
+            <button class="btn btn-secondary" type="submit">Filtern</button>
+            <button class="btn btn-secondary" type="button" onclick="resetCourseFilter()">Reset</button>
+        </form>
+    </section>
+
+    <!-- Intro Heading Text -->
+    <section class="intro-heading">
+        <div class="intro-inner">
+            <h2>Liebe die Fotografie und mach einzigartige Fotos.<br><span class="sub">Diese Plattform unterstützt Dich dabei.</span></h2>
         </div>
-    </header>
+    </section>
+
+    <!-- Card Grid (Kurse / Events) -->
+    <section id="kurse" class="card-section">
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Sample Cards -->
+            <article class="card" data-theme="landschaft">
+                <div class="ribbon">Exklusiv</div>
+                <img src="assets/img1.svg" alt="Arktische Fjorde" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Entdeckungsreise Arktische Fjorde</h3>
+                    <p class="card-text">Lerne die stille der arktischen Fjorde und die Fotografie der kalten Landschaften kennen.</p>
+                    <div class="card-meta"><span>📍 Norwegen</span> <span>📅 8–20 Feb 2026</span></div>
+                    <div class="card-tags"><span class="tag">Landschaft</span><span class="tag">Reise</span></div>
+                </div>
+            </article>
+            <article class="card" data-theme="porträt">
+                <div class="ribbon alt">FocusKurs</div>
+                <img src="assets/img2.svg" alt="Porträt Nordsee" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">St. Peter-Ording – feine ART</h3>
+                    <p class="card-text">Intensive Praxis: Portrait, Natürlichkeit, Feinzeichnung &amp; Wind. Workshop direkt an der Küste.</p>
+                    <div class="card-meta"><span>📍 Deutschland</span> <span>📅 3–5 Mär 2026</span></div>
+                    <div class="card-tags"><span class="tag">Porträt</span><span class="tag">Workshop</span></div>
+                </div>
+            </article>
+            <article class="card" data-theme="technik">
+                <div class="ribbon">FocusKurs</div>
+                <img src="assets/img3.svg" alt="Fokus Stacking" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Fokus Stacking</h3>
+                    <p class="card-text">Präzise Schärfentiefe erzeugen – Schritt für Schritt Workflow &amp; Software Tools.</p>
+                    <div class="card-meta"><span>📍 Online</span> <span>📅 6–16 Dez 2025</span></div>
+                    <div class="card-tags"><span class="tag">Technik</span><span class="tag">Makro</span></div>
+                </div>
+            </article>
+            <article class="card" data-theme="workflow">
+                <div class="ribbon alt">FocusKurs</div>
+                <img src="assets/img4.svg" alt="Winter Impressionen" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Winterimpressionen Simplon</h3>
+                    <p class="card-text">Motivwahl, Belichtung &amp; RAW Workflow für Schnee &amp; Nebel – Komposition üben.</p>
+                    <div class="card-meta"><span>📍 Schweiz</span> <span>📅 11 Jan 2026</span></div>
+                    <div class="card-tags"><span class="tag">Workflow</span><span class="tag">Outdoor</span></div>
+                </div>
+            </article>
+        </div>
+    </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="section portfolio">
@@ -213,6 +265,5 @@
     </footer>
 
     <script src="script.js"></script>
-    </div><!-- /siteContent -->
 </body>
 </html>

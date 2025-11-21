@@ -9,12 +9,11 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Marco Lips</div>
+            <a class="logo" href="#home">Marco Lips</a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#tools" class="nav-link">Tools</a></li>
-                <li><a href="#notes" class="nav-link">Notizen</a></li>
-                <li><a href="#gallery" class="nav-link">Galerie</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
             </ul>
             <div class="hamburger">
@@ -25,16 +24,49 @@
         </div>
     </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="section hero">
-        <div class="hero-content">
-            <h1>Willkommen!</h1>
-            <p>Dies ist meine private Webseite zum Testen verschiedener Funktionen und Ideen.</p>
-            <button class="btn btn-primary" onclick="scrollToSection('tools')">Erkunde Tools</button>
+    <!-- Hero / Intro (fullscreen image) -->
+    <header id="home" class="hero full-hero">
+        <picture>
+            <source srcset="assets/hero-1600.jpg" media="(min-width:1600px)">
+            <img src="assets/hero-1200.jpg" alt="Hero image" class="hero-img">
+        </picture>
+
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 class="hero-title">Marco Lips</h1>
+                <p class="hero-sub">Photography & Visual Storytelling</p>
+                <a class="btn btn-primary" href="#portfolio">Meine Arbeiten</a>
+            </div>
+        </div>
+        <a class="hero-hotspot" href="#portfolio" aria-label="Gehe zum Portfolio"></a>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio">
+        <div class="section-inner">
+            <h2>Portfolio</h2>
+            <p class="section-lead">Auswahl an Bildern — klick für große Ansicht.</p>
+
+            <div class="masonry" id="gallery">
+                <figure class="masonry-item"><img src="assets/img1.svg" alt="Bild 1" data-index="0"></figure>
+                <figure class="masonry-item"><img src="assets/img2.svg" alt="Bild 2" data-index="1"></figure>
+                <figure class="masonry-item"><img src="assets/img3.svg" alt="Bild 3" data-index="2"></figure>
+                <figure class="masonry-item"><img src="assets/img4.svg" alt="Bild 4" data-index="3"></figure>
+                <figure class="masonry-item"><img src="assets/img5.svg" alt="Bild 5" data-index="4"></figure>
+                <figure class="masonry-item"><img src="assets/img6.svg" alt="Bild 6" data-index="5"></figure>
+            </div>
         </div>
     </section>
 
-    <!-- Tools Section -->
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="section-inner">
+            <h2>About</h2>
+            <p>Ich fotografiere leidenschaftlich und erzähle visuelle Geschichten. Diese Seite ist ein Portfolio-Layout zum Testen und Präsentieren.</p>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
     <section id="tools" class="section">
         <h2>Interaktive Tools</h2>
         <div class="tools-grid">
@@ -43,7 +75,7 @@
                 <h3>Rechner</h3>
                 <div class="calculator">
                     <input type="number" id="num1" placeholder="Erste Zahl" class="calc-input">
-                    <select id="operation" class="calc-select">
+                    <select id="operation" class="calc-select" title="Rechenoperation wählen">
                         <option value="+">+</option>
                         <option value="-">-</option>
                         <option value="*">×</option>
@@ -82,13 +114,13 @@
             <div class="tool-card">
                 <h3>Wetter Simulator</h3>
                 <div class="weather-sim">
-                    <select id="weatherType" class="weather-select" onchange="updateWeather()">
+                    <select id="weatherType" class="weather-select" onchange="updateWeather()" title="Wettertyp wählen">
                         <option value="sunny">☀️ Sonnig</option>
                         <option value="cloudy">☁️ Bewölkt</option>
                         <option value="rainy">🌧️ Regnerisch</option>
                         <option value="snowy">❄️ Schneeig</option>
                     </select>
-                    <input type="range" id="tempSlider" min="-20" max="40" value="20" class="temp-slider" onchange="updateTemp()">
+                    <input type="range" id="tempSlider" min="-20" max="40" value="20" class="temp-slider" onchange="updateTemp()" title="Temperatur einstellen">
                     <p id="weatherInfo">20°C - Sonnig</p>
                 </div>
             </div>
@@ -140,12 +172,12 @@
     <section id="gallery" class="section">
         <h2>Galerie</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+            <div class="gallery-item g1" aria-hidden="true"></div>
+            <div class="gallery-item g2" aria-hidden="true"></div>
+            <div class="gallery-item g3" aria-hidden="true"></div>
+            <div class="gallery-item g4" aria-hidden="true"></div>
+            <div class="gallery-item g5" aria-hidden="true"></div>
+            <div class="gallery-item g6" aria-hidden="true"></div>
         </div>
     </section>
 

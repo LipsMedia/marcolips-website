@@ -7,124 +7,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Slim Top Navigation -->
+    <!-- Minimal Navigation -->
     <nav class="topbar">
         <div class="nav-container">
             <a class="logo" href="#home">Marco Lips</a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#kurse" class="nav-link">FotoKurse</a></li>
-                <li><a href="#events" class="nav-link">FotoEvents</a></li>
-                <li><a href="#reisen" class="nav-link">FotoReisen</a></li>
-                <li><a href="#plus" class="nav-link">FotoPlus</a></li>
-                <li><a href="#walk" class="nav-link">FotoWalk</a></li>
-                <li><a href="#team" class="nav-link">FotoTeam</a></li>
-                <li><a href="#portfolio" class="nav-link">Galerie</a></li>
+                <li><a href="#Hmmmm" class="nav-link">Hmmmm</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
-    <!-- Banner Section -->
+
+    <!-- Banner nur oben -->
     <section class="banner" id="home">
         <picture>
-            <!-- Beide Quellen verweisen vorerst auf dasselbe Bild, weil hero-1600/1200 fehlen -->
             <source srcset="assets/hero.jpg" media="(min-width:1600px)">
             <img src="assets/hero.jpg" alt="Banner" class="banner-img">
         </picture>
     </section>
 
-    <!-- Filter Bar -->
-    <section class="filter-bar">
-        <form id="filterForm" class="filter-form" onsubmit="applyCourseFilter(event)">
-            <label for="themeSelect" class="visually-hidden">Thema auswählen</label>
-            <select id="themeSelect" class="filter-select" title="Thema filtern">
-                <option value="">Auswählen...</option>
-                <option value="landschaft">Landschaft</option>
-                <option value="porträt">Porträt</option>
-                <option value="technik">Technik</option>
-                <option value="workflow">Workflow</option>
-            </select>
-            <button class="btn btn-secondary" type="submit">Filtern</button>
-            <button class="btn btn-secondary" type="button" onclick="resetCourseFilter()">Reset</button>
-        </form>
-    </section>
-
-    <!-- Intro Heading Text -->
-    <section class="intro-heading">
-        <div class="intro-inner">
-            <h2>Liebe die Fotografie und mach einzigartige Fotos.<br><span class="sub">Diese Plattform unterstützt Dich dabei.</span></h2>
-        </div>
-    </section>
-
-    <!-- Card Grid (Kurse / Events) -->
-    <section id="kurse" class="card-section">
-        <div class="cards-grid" id="cardsGrid">
-            <!-- Sample Cards -->
-            <article class="card" data-theme="landschaft">
-                <div class="ribbon">Exklusiv</div>
-                <img src="assets/img1.svg" alt="Arktische Fjorde" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Darf es mal was anderes sein</h3>
-                    <p class="card-text">Lerne die stille der arktischen Fjorde und die Fotografie der kalten Landschaften kennen.</p>
-                    <div class="card-meta"><span>📍 Norwegen</span> <span>📅 8–20 Feb 2026</span></div>
-                    <div class="card-tags"><span class="tag">Landschaft</span><span class="tag">Reise</span></div>
-                </div>
-            </article>
-            <article class="card" data-theme="porträt">
-                <div class="ribbon alt">FocusKurs</div>
-                <img src="assets/img2.svg" alt="Porträt Nordsee" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">St. Peter-Ording – feine ART</h3>
-                    <p class="card-text">Intensive Praxis: Portrait, Natürlichkeit, Feinzeichnung &amp; Wind. Workshop direkt an der Küste.</p>
-                    <div class="card-meta"><span>📍 Deutschland</span> <span>📅 3–5 Mär 2026</span></div>
-                    <div class="card-tags"><span class="tag">Porträt</span><span class="tag">Workshop</span></div>
-                </div>
-            </article>
-            <article class="card" data-theme="technik">
-                <div class="ribbon">FocusKurs</div>
-                <img src="assets/img3.svg" alt="Fokus Stacking" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Fokus Stacking</h3>
-                    <p class="card-text">Präzise Schärfentiefe erzeugen – Schritt für Schritt Workflow &amp; Software Tools.</p>
-                    <div class="card-meta"><span>📍 Online</span> <span>📅 6–16 Dez 2025</span></div>
-                    <div class="card-tags"><span class="tag">Technik</span><span class="tag">Makro</span></div>
-                </div>
-            </article>
-            <article class="card" data-theme="workflow">
-                <div class="ribbon alt">FocusKurs</div>
-                <img src="assets/img4.svg" alt="Winter Impressionen" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Winterimpressionen Simplon</h3>
-                    <p class="card-text">Motivwahl, Belichtung &amp; RAW Workflow für Schnee &amp; Nebel – Komposition üben.</p>
-                    <div class="card-meta"><span>📍 Schweiz</span> <span>📅 11 Jan 2026</span></div>
-                    <div class="card-tags"><span class="tag">Workflow</span><span class="tag">Outdoor</span></div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section portfolio">
-        <div class="section-inner">
-            <h2>Portfolio</h2>
-            <p class="section-lead">Auswahl an Bildern — klick für große Ansicht.</p>
-
-            <div class="masonry" id="gallery">
-                <figure class="masonry-item"><img src="assets/img1.svg" alt="Bild 1" data-index="0"></figure>
-                <figure class="masonry-item"><img src="assets/img2.svg" alt="Bild 2" data-index="1"></figure>
-                <figure class="masonry-item"><img src="assets/img3.svg" alt="Bild 3" data-index="2"></figure>
-                <figure class="masonry-item"><img src="assets/img4.svg" alt="Bild 4" data-index="3"></figure>
-                <figure class="masonry-item"><img src="assets/img5.svg" alt="Bild 5" data-index="4"></figure>
-                <figure class="masonry-item"><img src="assets/img6.svg" alt="Bild 6" data-index="5"></figure>
-            </div>
-        </div>
-    </section>
-
-    
+    <!-- Leere Inhaltsfläche -->
+    <main id="Hmmmm" class="empty-main" aria-label="Leere Seite"></main>
 
     <footer class="footer">
         <p>&copy; 2025 Marco Lips. Alle Rechte vorbehalten.</p>

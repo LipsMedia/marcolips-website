@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Lips - Private Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Marco Lips</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#tools" class="nav-link">Tools</a></li>
+                <li><a href="#notes" class="nav-link">Notizen</a></li>
+                <li><a href="#gallery" class="nav-link">Galerie</a></li>
+                <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section hero">
+        <div class="hero-content">
+            <h1>Willkommen!</h1>
+            <p>Dies ist meine private Webseite zum Testen verschiedener Funktionen und Ideen.</p>
+            <button class="btn btn-primary" onclick="scrollToSection('tools')">Erkunde Tools</button>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="section">
+        <h2>Interaktive Tools</h2>
+        <div class="tools-grid">
+            <!-- Rechner Tool -->
+            <div class="tool-card">
+                <h3>Rechner</h3>
+                <div class="calculator">
+                    <input type="number" id="num1" placeholder="Erste Zahl" class="calc-input">
+                    <select id="operation" class="calc-select">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">×</option>
+                        <option value="/">÷</option>
+                    </select>
+                    <input type="number" id="num2" placeholder="Zweite Zahl" class="calc-input">
+                    <button class="btn btn-secondary" onclick="calculate()">=</button>
+                    <div class="calc-result" id="calcResult">Ergebnis: -</div>
+                </div>
+            </div>
+
+            <!-- Todo Liste -->
+            <div class="tool-card">
+                <h3>Todo Liste</h3>
+                <div class="todo-container">
+                    <div class="todo-input-group">
+                        <input type="text" id="todoInput" placeholder="Neue Aufgabe..." class="todo-input">
+                        <button class="btn btn-secondary" onclick="addTodo()">Hinzufügen</button>
+                    </div>
+                    <ul id="todoList" class="todo-list"></ul>
+                </div>
+            </div>
+
+            <!-- Farbgenerator -->
+            <div class="tool-card">
+                <h3>Farbgenerator</h3>
+                <div class="color-generator">
+                    <div class="color-preview" id="colorPreview"></div>
+                    <input type="text" id="colorHex" placeholder="#000000" class="color-input" maxlength="7">
+                    <button class="btn btn-secondary" onclick="generateColor()">Zufällige Farbe</button>
+                    <p id="colorInfo" class="color-info">Klicke auf Farben oder generiere neue</p>
+                </div>
+            </div>
+
+            <!-- Wetter Simulator -->
+            <div class="tool-card">
+                <h3>Wetter Simulator</h3>
+                <div class="weather-sim">
+                    <select id="weatherType" class="weather-select" onchange="updateWeather()">
+                        <option value="sunny">☀️ Sonnig</option>
+                        <option value="cloudy">☁️ Bewölkt</option>
+                        <option value="rainy">🌧️ Regnerisch</option>
+                        <option value="snowy">❄️ Schneeig</option>
+                    </select>
+                    <input type="range" id="tempSlider" min="-20" max="40" value="20" class="temp-slider" onchange="updateTemp()">
+                    <p id="weatherInfo">20°C - Sonnig</p>
+                </div>
+            </div>
+
+            <!-- Text Converter -->
+            <div class="tool-card">
+                <h3>Text Converter</h3>
+                <div class="text-converter">
+                    <textarea id="textInput" placeholder="Gib Text ein..." class="converter-textarea" maxlength="500"></textarea>
+                    <div class="converter-buttons">
+                        <button class="btn btn-secondary" onclick="convertText('upper')">GROSSBUCHSTABEN</button>
+                        <button class="btn btn-secondary" onclick="convertText('lower')">kleinbuchstaben</button>
+                        <button class="btn btn-secondary" onclick="convertText('reverse')">Umkehren</button>
+                    </div>
+                    <div id="convertResult" class="convert-result"></div>
+                </div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="tool-card">
+                <h3>Countdown Timer</h3>
+                <div class="timer-container">
+                    <input type="number" id="timerSeconds" placeholder="Sekunden" min="1" max="3600" value="60" class="timer-input">
+                    <div class="timer-buttons">
+                        <button class="btn btn-secondary" onclick="startTimer()">Start</button>
+                        <button class="btn btn-secondary" onclick="stopTimer()">Stop</button>
+                        <button class="btn btn-secondary" onclick="resetTimer()">Reset</button>
+                    </div>
+                    <div id="timerDisplay" class="timer-display">00:00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section id="notes" class="section">
+        <h2>Schnellnotizen</h2>
+        <div class="notes-container">
+            <div class="note-input-group">
+                <input type="text" id="noteTitle" placeholder="Titel..." class="note-title-input">
+                <textarea id="noteText" placeholder="Notiz schreiben..." class="note-textarea"></textarea>
+                <button class="btn btn-primary" onclick="addNote()">Notiz speichern</button>
+            </div>
+            <div id="notesList" class="notes-list"></div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2>Galerie</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+            <div class="gallery-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+            <div class="gallery-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+            <div class="gallery-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+            <div class="gallery-item" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+            <div class="gallery-item" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="section">
+        <h2>Kontakt</h2>
+        <div class="contact-form">
+            <form onsubmit="submitForm(event)">
+                <input type="text" placeholder="Name" required class="form-input">
+                <input type="email" placeholder="E-Mail" required class="form-input">
+                <textarea placeholder="Nachricht" required class="form-textarea" maxlength="1000"></textarea>
+                <button type="submit" class="btn btn-primary">Senden</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Marco Lips. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

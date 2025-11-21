@@ -1,0 +1,35 @@
+name: 🚀 Deploy to Web Hoster
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Manuelles Ausführen erlaubt
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Repository auschecken
+        uses: actions/checkout@v3
+      
+      - name: 📤 Zu FTP-Server hochladen
+        uses: appleboy/ftp-action@master
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local_dir: ./
+          remote_dir: ${{ secrets.FTP_REMOTE_PATH }}
+          delete: true
+          ignore: |
+            .git
+            .github
+            node_modules
+            deploy-config.json
+            deploy.ps1
+            .gitignore
+            DEPLOYMENT_GUIDE.md
+      
+      - name: ✅ Deployment erfolgreich
+        run: echo "🎉 Website wurde erfolgreich aktualisiert!"

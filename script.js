@@ -415,3 +415,75 @@ function submitForm(event) {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Website geladen - Alle Tools sind einsatzbereit!');
 });
+
+// ========== Lightbox for portfolio gallery ==========
+(() => {
+    const imgs = Array.from(document.querySelectorAll('.masonry img'));
+    if (!imgs.length) return;
+
+    // Create lightbox elements
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="Schliessen">✕</button>
+            <button class="lightbox-prev" aria-label="Vorheriges">◀</button>
+            <img src="" alt="" />
+            <button class="lightbox-next" aria-label="Nächstes">▶</button>
+        </div>
+    `;
+    document.body.appendChild(lb);
+
+    const lbImg = lb.querySelector('img');
+    const btnClose = lb.querySelector('.lightbox-close');
+    const btnPrev = lb.querySelector('.lightbox-prev');
+    const btnNext = lb.querySelector('.lightbox-next');
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+        currentIndex = index;
+        const src = imgs[currentIndex].getAttribute('data-full') || imgs[currentIndex].src;
+        const alt = imgs[currentIndex].alt || '';
+        lbImg.src = src;
+        lbImg.alt = alt;
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lb.classList.remove('active');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % imgs.length;
+        openLightbox(currentIndex);
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+        openLightbox(currentIndex);
+    }
+
+    imgs.forEach((img, idx) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => openLightbox(idx));
+    });
+
+    btnClose.addEventListener('click', closeLightbox);
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+
+    lb.addEventListener('click', (e) => {
+        if (e.target === lb) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+    });
+})();
